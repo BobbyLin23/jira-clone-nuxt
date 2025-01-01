@@ -13,5 +13,8 @@ Inspired by [Code with Antonio](https://www.youtube.com/watch?v=Av9C7xlV0fA&t=27
 - Better Auth
 
 ## Steps
--[ ] Project Init
--[ ] Auth UI
+- [x] Project Init
+- [x] Auth UI
+- [ ] Auth Logic and Routes Protection
+- [ ] Dashboard Layout
+- [ ] Workspace Creation

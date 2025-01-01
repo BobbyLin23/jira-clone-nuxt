@@ -1,0 +1,37 @@
+<script setup lang="ts">
+interface DottedSeparatorProps {
+  color?: string
+  height?: string
+  dotSize?: string
+  gapSize?: string
+  direction?: 'horizontal' | 'vertical'
+}
+
+const props = withDefaults(defineProps<DottedSeparatorProps>(), {
+  color: '#d4d4d8',
+  height: '2px',
+  dotSize: '2',
+  gapSize: '6',
+  direction: 'horizontal',
+})
+
+const attrs = useAttrs()
+
+const isHorizontal = computed(() => props.direction === 'horizontal')
+</script>
+
+<template>
+  <div :class="cn(isHorizontal ? 'w-full flex items-center' : 'h-full flex flex-col items-center', attrs.class as string)">
+    <div
+      :class="cn(isHorizontal ? 'flex-grow' : 'flex-grow-0')"
+      :style="{
+        width: isHorizontal ? '100%' : height,
+        height: isHorizontal ? height : '100%',
+        backgroundImage: `radial-gradient(circle, ${color} 25%, transparent 25%)`,
+        backgroundSize: isHorizontal ? `${parseInt(dotSize) + parseInt(gapSize)}px ${height}` : `${height} ${parseInt(dotSize)}+ ${parseInt(gapSize)}px`,
+        backgroundRepeat: isHorizontal ? 'repeat-x' : 'repeat-y',
+        backgroundPosition: 'center',
+      }"
+    />
+  </div>
+</template>
