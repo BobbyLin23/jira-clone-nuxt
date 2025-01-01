@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
+import { toast } from 'vue-sonner'
 import { z } from 'zod'
+
+const router = useRouter()
+
+const supabase = useSupabaseClient()
 
 const formSchema = toTypedSchema(
   z.object({
@@ -20,9 +25,34 @@ const form = useForm({
   validationSchema: formSchema,
 })
 
-const onSubmit = form.handleSubmit((values) => {
-  console.log('values', values)
+const onSubmit = form.handleSubmit(async (values) => {
+  const { error } = await supabase.auth.signInWithPassword({
+    email: values.email,
+    password: values.password,
+  })
+
+  if (error) {
+    toast.error(error.message)
+    return
+  }
+  toast.success('Logged in successfully')
+  router.push('/')
 })
+
+function handleSocialLogin(provider: 'google' | 'github') {
+  return async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: 'http://localhost:3000',
+      },
+    })
+
+    if (error) {
+      toast.error(error.message)
+    }
+  }
+}
 </script>
 
 <template>
@@ -72,11 +102,11 @@ const onSubmit = form.handleSubmit((values) => {
       <DottedSeparator />
     </div>
     <CardContent class="p-7 flex flex-col gap-y-4">
-      <Button variant="secondary" size="lg" class="w-full" :disabled="false">
+      <Button variant="secondary" size="lg" class="w-full" :disabled="false" @click="handleSocialLogin('google')">
         <Icon name="devicon:google" class="size-5 mr-2" />
         Login with Google
       </Button>
-      <Button variant="secondary" size="lg" class="w-full" :disabled="false">
+      <Button variant="secondary" size="lg" class="w-full" :disabled="false" @click="handleSocialLogin('github')">
         <Icon name="devicon:github" class="size-5 mr-2" />
         Login with GitHub
       </Button>

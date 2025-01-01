@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import process from 'node:process'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
@@ -9,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/fonts',
     '@nuxt/icon',
+    '@nuxtjs/supabase',
   ],
   shadcn: {
     prefix: '',
@@ -22,4 +24,19 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  supabase: {
+    redirectOptions: {
+      login: '/sign-in',
+      callback: '/confirm',
+      include: undefined,
+      exclude: ['/sign-in', '/sign-up'],
+      cookieRedirect: false,
+    },
+  },
+  runtimeConfig: {
+    public: {
+      supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
+      supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
+    },
+  },
 })

@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+
 interface DottedSeparatorProps {
+  class?: HTMLAttributes['class']
   color?: string
   height?: string
   dotSize?: string
@@ -15,13 +18,11 @@ const props = withDefaults(defineProps<DottedSeparatorProps>(), {
   direction: 'horizontal',
 })
 
-const attrs = useAttrs()
-
 const isHorizontal = computed(() => props.direction === 'horizontal')
 </script>
 
 <template>
-  <div :class="cn(isHorizontal ? 'w-full flex items-center' : 'h-full flex flex-col items-center', attrs.class as string)">
+  <div :class="cn(isHorizontal ? 'w-full flex items-center' : 'h-full flex flex-col items-center', props.class)">
     <div
       :class="cn(isHorizontal ? 'flex-grow' : 'flex-grow-0')"
       :style="{

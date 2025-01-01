@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
+import { toast } from 'vue-sonner'
 import { z } from 'zod'
+
+const supabase = useSupabaseClient()
 
 const formSchema = toTypedSchema(
   z.object({
@@ -23,8 +26,25 @@ const form = useForm({
   validationSchema: formSchema,
 })
 
-const onSubmit = form.handleSubmit((values) => {
-  console.log('values', values)
+const onSubmit = form.handleSubmit(async (values) => {
+  try {
+    const { error } = await supabase.auth.signUp({
+      email: values.email,
+      password: values.password,
+      options: {
+        emailRedirectTo: 'http://localhost:3000/confirm',
+      },
+    })
+    if (error) {
+      toast.error(error.message)
+    }
+    else {
+      toast.success('Please check your email to confirm your account')
+    }
+  }
+  catch (e) {
+    console.error(e)
+  }
 })
 </script>
 
