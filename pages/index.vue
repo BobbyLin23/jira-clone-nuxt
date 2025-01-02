@@ -4,6 +4,6 @@
 
 <template>
   <div class="p-2">
-    <UserButton />
+    Dashboard
   </div>
 </template>
