@@ -36,7 +36,7 @@ const onSubmit = form.handleSubmit(async (values) => {
     return
   }
   toast.success('Logged in successfully')
-  router.push('/')
+  await router.push('/')
 })
 
 function handleSocialLogin(provider: 'google' | 'github') {

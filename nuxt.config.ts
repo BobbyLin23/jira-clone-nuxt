@@ -23,6 +23,10 @@ export default defineNuxtConfig({
       path: '~/components/auth',
       pathPrefix: false,
     },
+    {
+      path: '~/components/workspaces',
+      pathPrefix: false,
+    },
   ],
   supabase: {
     redirectOptions: {

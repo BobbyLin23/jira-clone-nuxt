@@ -18,3 +18,8 @@ Inspired by [Code with Antonio](https://www.youtube.com/watch?v=Av9C7xlV0fA&t=27
 - [x] Auth Logic and Routes Protection
 - [x] Dashboard Layout
 - [ ] Workspace Creation
+
+## DB Schema
+### Workspace
+- name
+- userId
