@@ -17,9 +17,23 @@ Inspired by [Code with Antonio](https://www.youtube.com/watch?v=Av9C7xlV0fA&t=27
 - [x] Auth UI
 - [x] Auth Logic and Routes Protection
 - [x] Dashboard Layout
-- [ ] Workspace Creation
-
-## DB Schema
-### Workspace
-- name
-- userId
+- [x] Workspace Creation
+- [ ] Image Upload
+- [ ] Workspace Switcher
+- [ ] Workspace Members
+- [ ] Workspace Creation Modal
+- [ ] Workspace Settings
+- [ ] Delete Workspace
+- [ ] Invite System
+- [ ] Delete Members
+- [ ] Add Projects
+- [ ] Project Settings
+- [ ] Task Creation
+- [ ] Data Table
+- [ ] Task Settings
+- [ ] Task Kanban
+- [ ] Task Calendar
+- [ ] Task Page
+- [ ] Project Analytics
+- [ ] Workspace Analytics
+- [ ] Deploy
