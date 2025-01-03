@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useId } from 'radix-vue'
 import { type HTMLAttributes, provide } from 'vue'
-import { cn } from '~/utils/cn'
+
 import { FORM_ITEM_INJECTION_KEY } from './injectionKeys'
 
 const props = defineProps<{

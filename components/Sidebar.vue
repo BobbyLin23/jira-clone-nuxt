@@ -8,6 +8,8 @@
       <NuxtImg src="/logo.svg" alt="logo" width="164" height="48" />
     </NuxtLink>
     <DottedSeparator class="my-2" />
+    <WorkspaceSwitcher />
+    <DottedSeparator class="my-2" />
     <Navigation />
   </aside>
 </template>

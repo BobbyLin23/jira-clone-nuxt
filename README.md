@@ -8,9 +8,9 @@ Inspired by [Code with Antonio](https://www.youtube.com/watch?v=Av9C7xlV0fA&t=27
 - Nuxt.js
 - TypeScript
 - Tailwind CSS
-- Shadcn UI
+- Shadcn Vue
 - Supabase
-- Better Auth
+- Vue Query
 
 ## Steps
 - [x] Project Init

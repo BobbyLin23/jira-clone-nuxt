@@ -7,6 +7,8 @@ export default defineEventHandler(async (event) => {
 
     const user = await serverSupabaseUser(event)
 
+    let image_url
+
     if (!user) {
       return createError({
         status: 401,
@@ -23,9 +25,24 @@ export default defineEventHandler(async (event) => {
       })
     }
 
+    // Handle the image upload here
+    if (body.image instanceof File) {
+      const { data, error } = await client.storage.from('images').upload(user.id, body.image)
+
+      if (error) {
+        console.error(error)
+        return createError({
+          status: 500,
+          statusMessage: 'Upload failed',
+        })
+      }
+      image_url = data.path
+    }
+
     const { data } = await client.from('workspace').insert({
       name: body.name,
       user_id: user.id,
+      image_url,
     })
 
     return {

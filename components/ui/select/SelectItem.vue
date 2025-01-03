@@ -8,7 +8,6 @@ import {
   useForwardProps,
 } from 'radix-vue'
 import { computed, type HTMLAttributes } from 'vue'
-import { cn } from '~/utils/cn'
 
 const props = defineProps<SelectItemProps & { class?: HTMLAttributes['class'] }>()
 

@@ -13,18 +13,21 @@ export interface Database {
         Row: {
           created_at: string
           id: string
+          image_url: string | null
           name: string
           user_id: string
         }
         Insert: {
           created_at?: string
           id?: string
+          image_url?: string | null
           name: string
           user_id?: string
         }
         Update: {
           created_at?: string
           id?: string
+          image_url?: string | null
           name?: string
           user_id?: string
         }

@@ -3,7 +3,7 @@ import type { DialogContentEmits, DialogContentProps } from 'radix-vue'
 import type { HtmlHTMLAttributes } from 'vue'
 import { useForwardPropsEmits } from 'radix-vue'
 import { DrawerContent, DrawerPortal } from 'vaul-vue'
-import { cn } from '~/utils/cn'
+
 import DrawerOverlay from './DrawerOverlay.vue'
 
 const props = defineProps<DialogContentProps & { class?: HtmlHTMLAttributes['class'] }>()

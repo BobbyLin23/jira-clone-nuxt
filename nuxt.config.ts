@@ -43,4 +43,7 @@ export default defineNuxtConfig({
       supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
     },
   },
+  devServer: {
+    port: 3016,
+  },
 })
