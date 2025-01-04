@@ -9,7 +9,7 @@ watch(() => route.fullPath, () => {
 </script>
 
 <template>
-  <Sheet :modal="false" :open="open">
+  <Sheet :modal="false" :open="open" @update:open="open = $event">
     <SheetTrigger as-child>
       <Button size="icon" variant="secondary" class="lg:hidden">
         <Icon name="mdi:menu" class="size-4 text-neutral-500" />

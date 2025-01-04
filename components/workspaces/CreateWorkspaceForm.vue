@@ -22,18 +22,11 @@ const onSubmit = form.handleSubmit((values) => {
   mutate(values)
 })
 
-function handleImageChange(e: InputEvent) {
-  const file = (e.target as HTMLInputElement)?.files?.[0]
-  if (file) {
-    form.setValues({ image: URL.createObjectURL(file) })
-  }
-}
-
 const imageUrl = computed(() => {
   if (form.values.image instanceof File) {
     return URL.createObjectURL(form.values.image)
   }
-  return form.values.image as string
+  return ''
 })
 </script>
 
@@ -90,7 +83,6 @@ const imageUrl = computed(() => {
                   class="hidden"
                   type="file"
                   accept="image/*"
-                  @change="handleImageChange"
                 >
                 <Button type="button" size="xs" variant="teritrary" class="w-fit mt-2" @click="() => inputRef?.click()">
                   Upload Image

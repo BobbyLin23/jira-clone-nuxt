@@ -18,11 +18,13 @@ Inspired by [Code with Antonio](https://www.youtube.com/watch?v=Av9C7xlV0fA&t=27
 - [x] Auth Logic and Routes Protection
 - [x] Dashboard Layout
 - [x] Workspace Creation
-- [ ] Image Upload
-- [ ] Workspace Switcher
+- [x] Image Upload
+- [x] Workspace Switcher
 - [ ] Workspace Members
 - [ ] Workspace Creation Modal
 - [ ] Workspace Settings
+- [ ] Bugs fix
+---
 - [ ] Delete Workspace
 - [ ] Invite System
 - [ ] Delete Members
@@ -37,3 +39,7 @@ Inspired by [Code with Antonio](https://www.youtube.com/watch?v=Av9C7xlV0fA&t=27
 - [ ] Project Analytics
 - [ ] Workspace Analytics
 - [ ] Deploy
+
+## Bugs Record
+1. Can't open the mobile sidebar.
+2. Upload images and create workspace

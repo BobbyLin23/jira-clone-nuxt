@@ -3,16 +3,23 @@ import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { toast } from 'vue-sonner'
 
 type ResponseType = Workspace
-type RequestType = InsertWorkspace
+type RequestType = InsertWorkspace & {
+  image?: File
+}
 
 export function useCreateWorkspace() {
   const queryClient = useQueryClient()
 
   return useMutation<ResponseType, Error, RequestType>({
     mutationFn: async (json) => {
+      const formData = new FormData()
+      formData.append('name', json.name)
+      if (json.image) {
+        formData.append('image', json.image)
+      }
       const res = await $fetch<ResponseType>('/api/workspaces', {
         method: 'POST',
-        body: JSON.stringify(json),
+        body: formData,
       })
 
       return JSON.parse(JSON.stringify(res))
