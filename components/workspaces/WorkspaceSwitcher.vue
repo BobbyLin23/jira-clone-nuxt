@@ -1,5 +1,16 @@
 <script lang="ts" setup>
-const { data } = useUseGetWorkspaces()
+const router = useRouter()
+const route = useRoute()
+
+const workspaceId = computed(() => route.params.workspaceId as string)
+
+const { data } = useGetWorkspaces()
+
+const { setIsOpen } = useCreateWorkspaceModal()
+
+function onSelect(id: string) {
+  router.push(`/workspaces/${id}`)
+}
 </script>
 
 <template>
@@ -8,9 +19,9 @@ const { data } = useUseGetWorkspaces()
       <p class="text-xs uppercase text-neutral-500">
         Workspaces
       </p>
-      <Icon name="carbon:add-filled" class="size-5 text-neutral-500 cursor-pointer hover:opacity-75 transition" />
+      <Icon name="carbon:add-filled" class="size-5 text-neutral-500 cursor-pointer hover:opacity-75 transition" @click="() => setIsOpen(true)" />
     </div>
-    <Select>
+    <Select :model-value="workspaceId" @update:model-value="onSelect">
       <SelectTrigger class="w-full bg-neutral-200 font-medium p-1">
         <SelectValue placeholder="No workspace selected" />
       </SelectTrigger>

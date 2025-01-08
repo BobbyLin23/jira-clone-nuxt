@@ -2,8 +2,8 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 
-defineProps<{
-  onCancel: () => void
+const props = defineProps<{
+  onCancel?: () => void
 }>()
 
 const formSchema = toTypedSchema(
@@ -20,6 +20,7 @@ const { mutate, isPending } = useCreateWorkspace()
 
 const onSubmit = form.handleSubmit((values) => {
   mutate(values)
+  props.onCancel?.()
 })
 
 const imageUrl = computed(() => {
@@ -93,7 +94,13 @@ const imageUrl = computed(() => {
         </FormField>
         <DottedSeparator class="py-7" />
         <div class="flex items-center justify-between">
-          <Button :disabled="isPending" type="button" size="lg" variant="secondary" @click="onCancel">
+          <Button
+            :disabled="isPending"
+            type="button" size="lg"
+            variant="secondary"
+            :class="cn(!onCancel && 'invisible')"
+            @click="onCancel"
+          >
             Cancel
           </Button>
           <Button :disabled="isPending" type="submit" size="lg">

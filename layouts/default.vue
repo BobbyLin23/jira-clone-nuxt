@@ -4,6 +4,7 @@
 
 <template>
   <div class="min-h-screen">
+    <CreateWorkspaceModal />
     <div class="flex w-full h-full">
       <div class="fixed left-0 top-0 hidden lg:block lg:w-[264px] h-full overflow-y-auto">
         <Sidebar />

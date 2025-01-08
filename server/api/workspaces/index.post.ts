@@ -1,4 +1,6 @@
 import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
+import { MemberRole } from '~/types/enum'
+import { generateInviteCode } from '~/utils/cn'
 
 export default defineEventHandler(async (event) => {
   try {
@@ -62,6 +64,7 @@ export default defineEventHandler(async (event) => {
         name,
         user_id: user.id,
         image_url,
+        invite_code: generateInviteCode(6),
       })
       .select()
       .single()
@@ -73,6 +76,12 @@ export default defineEventHandler(async (event) => {
         message: 'Failed to insert workspace',
       })
     }
+
+    await client.from('member').insert({
+      user_id: user.id,
+      workspace_id: workspace.id,
+      role: MemberRole.ADMIN,
+    })
 
     return workspace
   }

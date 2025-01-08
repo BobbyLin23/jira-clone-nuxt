@@ -20,6 +20,7 @@ export function useCreateWorkspace() {
       const res = await $fetch<ResponseType>('/api/workspaces', {
         method: 'POST',
         body: formData,
+        headers: useRequestHeaders(['cookie']),
       })
 
       return JSON.parse(JSON.stringify(res))

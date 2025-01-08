@@ -9,11 +9,47 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      member: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database['public']['Enums']['member_role']
+          updated_at: string
+          user_id: string
+          workspace_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database['public']['Enums']['member_role']
+          updated_at?: string
+          user_id: string
+          workspace_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database['public']['Enums']['member_role']
+          updated_at?: string
+          user_id?: string
+          workspace_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'member_workspace_id_fkey'
+            columns: ['workspace_id']
+            isOneToOne: false
+            referencedRelation: 'workspace'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       workspace: {
         Row: {
           created_at: string
           id: string
           image_url: string | null
+          invite_code: string
           name: string
           user_id: string
         }
@@ -21,6 +57,7 @@ export interface Database {
           created_at?: string
           id?: string
           image_url?: string | null
+          invite_code: string
           name: string
           user_id?: string
         }
@@ -28,6 +65,7 @@ export interface Database {
           created_at?: string
           id?: string
           image_url?: string | null
+          invite_code?: string
           name?: string
           user_id?: string
         }
@@ -41,7 +79,7 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      member_role: 'ADMIN' | 'MEMBER'
     }
     CompositeTypes: {
       [_ in never]: never

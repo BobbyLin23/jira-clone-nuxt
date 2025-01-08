@@ -20,7 +20,7 @@ Inspired by [Code with Antonio](https://www.youtube.com/watch?v=Av9C7xlV0fA&t=27
 - [x] Workspace Creation
 - [x] Image Upload
 - [x] Workspace Switcher
-- [ ] Workspace Members
+- [x] Workspace Members
 - [ ] Workspace Creation Modal
 - [ ] Workspace Settings
 - [ ] Bugs fix
